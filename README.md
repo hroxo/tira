@@ -1,99 +1,96 @@
-### 🗺️ O Roadmap "Fast-Pace" (Ciclo de 48h-72h)
+### 🗺️ Roadmap Tático: Projeto "Nexus"
 
-#### 👥 Os Papéis (Squad 4)
-1.  **Back & AI (AI & Backend Core):** O Cérebro. Foca em Django, Lógica de Negócio e Computer Vision.
-2.  **DevOps (Infra & Deploy):** O Guardião. Foca em Docker, CI/CD e manter os custos a zero.
-3.  **Frontend (React/UI):** A Cara. Foca em UX, Dashboards e interatividade.
-4.  **Data Wrangler (O Novo Membro):** A Cola. Foca em Ingestão de Dados (Parsers de PDF/Excel), APIs e Testes com dados falsos.
-
----
-
-### 🏁 Fase 1: Fundação e "Hello World" (As primeiras 6 horas)
-**Objetivo:** Ter o ambiente pronto e o primeiro "pixel" no ecrã. Nada de complexidade ainda.
-
-* **WebS:**
-    * [ ] Iniciar projeto Django e configurar ambiente virtual.
-    * [ ] **Micro-Objetivo:** Criar os `models.py` iniciais (Tabelas: `Produto`, `Fornecedor`, `Encomenda`). *Lembra-te: Define as relações (ForeignKey) agora para não sofreres depois.*
-    * [ ] Instalar `Django Rest Framework` (DRF).
-
-* **Data Wrangler (Dados):**
-    * [ ] Criar um script Python simples (separado do Django) para testar a biblioteca `PyPDF2` ou `Tabula`.
-    * [ ] **Micro-Objetivo:** Conseguir extrair texto de um PDF de fatura de exemplo e imprimir no terminal.
-    * [ ] Gerar um ficheiro JSON com 50 produtos falsos para povoar a BD depois.
-
-* **Frontend (React):**
-    * [ ] `create-react-app` ou `vite`.
-    * [ ] Instalar biblioteca de componentes (sugiro **ShadCN** ou **Chakra UI** para ser rápido).
-    * [ ] **Micro-Objetivo:** Criar a "Navbar" e uma página "Dashboard" vazia.
-
-* **DevOps (Infra):**
-    * [ ] Configurar repositório Git (Monorepo ou separado).
-    * [ ] Configurar conta no **Render** (Backend) e **Vercel** (Frontend).
-    * [ ] **Micro-Objetivo:** Fazer o deploy de um "Hello World" para garantir que o pipeline funciona.
+#### 👥 A Squad (4 Elementos)
+1.  **Lead Dev (Tu):** Arquiteto do Django, OOP e Lógica de Negócio (O "Cérebro").
+2.  **Data Wrangler:** Especialista em Ingestão de Ficheiros, RAG e Scripts de AI (A "Memória").
+3.  **Frontend:** UX/UI Dinâmico e Visualização de Dados (A "Cara").
+4.  **DevOps:** Infraestrutura, Docker e Bases de Dados (A "Espinha Dorsal").
 
 ---
 
-### ⚙️ Fase 2: O Motor Lógico (As próximas 12 horas)
-**Objetivo:** O sistema já faz operações básicas (CRUD). É funcional, mas "burro" (sem AI).
+### 🏁 Fase 1: Fundação e Estrutura (0h - 6h)
+**Objetivo:** Ter o ambiente unificado a correr em todas as máquinas. "Hello World" funcional.
 
-* **Backend:**
-    * [ ] Criar os Endpoints da API (GET/POST produtos).
-    * [ ] Implementar a lógica de stock (ex: quando entra fatura, aumenta stock).
-    * [ ] **Micro-Objetivo:** Conseguir criar um produto via Postman/Insomnia.
+* **Lead Dev (Backend Core):**
+    * [ ] Iniciar projeto Django + Django Rest Framework.
+    * [ ] **Micro-Objetivo (Crucial):** Criar o modelo `EmpresaProfile` com um campo `tipo_negocio` (Ex: 'retalho', 'servicos', 'restauracao'). É isto que define o comportamento polimórfico.
+    * [ ] Definir os modelos base `Documento` e `Transacao`.
 
-* **Data Wrangler (Integração):**
-    * [ ] Integrar o script de PDF dentro do Django (criar uma função `utils.py`).
-    * [ ] Criar o endpoint de upload de ficheiro.
-    * [ ] **Micro-Objetivo:** O utilizador faz upload de um PDF e o sistema devolve o JSON dos itens encontrados.
+* **Data Wrangler (Setup AI Local):**
+    * [ ] Configurar script isolado para testar `LangChain` ou `ChromaDB` (Base de dados vetorial para guardar o conhecimento dos documentos).
+    * [ ] **Micro-Objetivo:** Criar um script que lê um PDF e devolve o texto limpo ("print text").
 
-* **Frontend (Conexão):**
-    * [ ] Consumir a API (Axios/Fetch).
-    * [ ] Criar Tabela de Inventário dinâmica.
-    * [ ] **Micro-Objetivo:** Listar os produtos que vêm do Backend no ecrã.
+* **Frontend (Shell):**
+    * [ ] Setup React (Vite).
+    * [ ] **Micro-Objetivo:** Criar o "Wizard de Onboarding". Uma tela simples onde o utilizador diz o nome da empresa e escolhe o tipo.
 
-* **DevOps (Docker):**
-    * [ ] Criar `docker-compose.yml` para que todos rodem o mesmo ambiente localmente.
-    * [ ] Configurar base de dados Postgres gratuita (Neon ou Supabase) e ligar ao Django.
+* **DevOps (Ambiente):**
+    * [ ] Criar `docker-compose.yml` com: Django, Postgres e (opcionalmente) ChromaDB.
+    * [ ] **Micro-Objetivo:** Garantir que todos fazem `docker-compose up` e veem a página de boas-vindas do Django sem erros.
 
 ---
 
-### 🧠 Fase 3: A Magia da AI e "Taylor Made" (O stprint final)
-**Objetivo:** Onde ganham o Hackathon. A AI entra em ação.
+### ⚙️ Fase 2: O Motor Polimórfico (6h - 18h)
+**Objetivo:** O sistema distingue tipos de negócio e aceita dados.
 
-* **AI Vision:**
-    * [ ] Implementar o `Tesseract` ou lógica de visão para ler fotos de etiquetas/faturas (caso o PDF falhe).
-    * [ ] **Micro-Objetivo:** Funcionalidade "Snap & Add" (Tira foto ao produto, ele aparece na BD).
+* **Lead Dev (Lógica OOP):**
+    * [ ] Implementar o **Factory Pattern** (como falámos). Se o user é 'Retalho', o sistema carrega os módulos de Stock. Se é 'Serviços', carrega Agenda.
+    * [ ] Criar API Endpoints: `/api/🗺️ O Roadmap "Fast-Pace" (Ciclo de 48h-72h)upload-documento` e `/api/dashboard-data`.
+    * [ ] **Micro-Objetivo:** Testar via Postman: criar uma empresa "Oficina" e ver se a API responde com estrutura de dados correta.
 
-* **Data Wrangler (AI Prediction):**
-    * [ ] Implementar a "Regressão Linear" simples (como falámos antes) para prever rutura de stock.
-    * [ ] **Micro-Objetivo:** Adicionar um campo "Dias até acabar" na API de produtos.
+* **Data Wrangler (Ingestão):**
+    * [ ] Ligar o script de PDF ao Django.
+    * [ ] **Micro-Objetivo:** Quando o user faz upload de uma "Fatura.pdf", o sistema extrai o texto, identifica a data e o valor total (usando Regex ou AI simples) e guarda na BD.
 
-* **Frontend (Wow Factor):**
-    * [ ] Criar os alertas visuais (Vermelho = Stock Crítico).
-    * [ ] Implementar gráficos de previsão (Chart.js ou Recharts).
-    * [ ] **Micro-Objetivo:** O Dashboard parece vivo e inteligente.
+* **Frontend (Contexto):**
+    * [ ] Criar Dashboard Condicional.
+    * [ ] **Micro-Objetivo:** Se a API devolver `type: retail`, renderizar componente "Tabela de Stock". Se `type: services`, renderizar "Lista de Agendamentos".
 
-* **DevOps (Performance):**
-    * [ ] Garantir que o processamento de imagem/PDF não bloqueia o site (se conseguirem, usem **Celery** básico ou Python Threads).
-    * [ ] Otimizar o build para a demo.
+* **DevOps (Persistência):**
+    * [ ] Configurar volumes do Docker para que os PDFs não desapareçam quando reiniciam o contentor.
+    * [ ] Preparar o deploy num serviço gratuito (Render/Railway) para testes iniciais.
 
 ---
 
-### 💎 Fase 4: Polish & Pitch (As últimas horas)
-**Objetivo:** Eliminar bugs óbvios e preparar a história.
+### 🧠 Fase 3: A Inteligência "Taylor Made" (18h - 36h)
+**Objetivo:** O "Wow Factor". O sistema dá conselhos baseados nos dados.
 
-* **Wrangler:** Testar casos extremos (upload de ficheiro errado, imagem escura). Escrever mensagens de erro amigáveis.
-* **Frontend:** Animações de loading (muito importante para disfarçar o tempo da AI).
-* **DevOps:** Monitorizar se o servidor gratuito não está a dormir.
-* **TODOS:** Ensaio da Demo. *O "caminho feliz" (happy path) tem de funcionar 100% das vezes.*
+* **Lead Dev (O Consultor):**🗺️ O Roadmap "Fast-Pace" (Ciclo de 48h-72h)
+    * [ ] Criar a lógica do Agente: Comparar receitas vs despesas.
+    * [ ] **Micro-Objetivo:** Endpoint `/api/conselho-do-dia`. Exemplo de resposta JSON: `{"alerta": "Gastos altos", "mensagem": "A conta de luz subiu 20%. Verifica os equipamentos."}`.
 
-### 🛠️ Diagrama de Fluxo de Trabalho (High Level)
+* **Data Wrangler (O Oráculo - RAG):**
+    * [ ] Implementar busca semântica.
+    * [ ] **Micro-Objetivo:** Permitir que o Frontend pergunte: "Quanto gastei em fornecedores?" e o Backend procura nos vetores dos PDFs e responde. (Usa a API da Groq aqui para gerar a resposta final).
+
+* **Frontend (Interatividade):**
+    * [ ] Criar o componente "Chat com o Consultor".
+    * [ ] **Micro-Objetivo:** Mostrar notificações proativas ("Tens 3 faturas em atraso").
+
+* **DevOps (Otimização):**
+    * [ ] Garantir que as chaves de API (Groq/OpenAI) estão seguras nas variáveis de ambiente.
+    * [ ] Teste de carga: O que acontece se 2 pessoas fizerem upload ao mesmo tempo?🗺️ O Roadmap "Fast-Pace" (Ciclo de 48h-72h)
+
+---
+
+### 💎 Fase 4: Polimento e Demo (36h - 48h)
+**Objetivo:** Vender a ideia. Tudo tem de parecer mágico.
+
+* **Lead Dev & Wrangler:** Criar **Dados Falsos Realistas** (Seed Data). A demo não pode ter tabelas vazias. Criar 2 perfis completos: "Café Central" e "Oficina do Zé".
+* **Frontend:** Animações de loading (importante quando a AI está a "pensar").
+* **DevOps:** Deploy final e verificação de domínios.
+
+---
+
+### 🧩 Arquitetura Visual do MVP
 
 
 
-### 💡 Dica do Coach para o "Data Wrangler" (Membro 4)
+### 💡 Conselho do Coach para o Capitão
 
-Se ele não tiver muita experiência com Python, diz-lhe para começar por **Scripts Isolados**.
-Em vez de tentar escrever logo dentro do Django, ele deve fazer um ficheiro `test_pdf.py`. Se funcionar lá, tu ( ) ajudas a copiar para dentro do Django. Isto evita que ele parta o servidor enquanto aprende.
+Nesta arquitetura, o maior risco é o **Data Wrangler** ficar preso na complexidade de ler PDFs imperfeitos.
+**Plano B:** Se a leitura automática falhar, implementem um botão "Edição Manual" no Frontend. Nunca deixem a Demo crashar porque o PDF estava torto. Mais vale o sistema dizer "Não consegui ler tudo, ajuda-me?" do que dar Erro 500.
+
+Vamos a isto, Squad? Qual é a primeira tarefa que queres atacar? 🚀 ficheiro `test_pdf.py`. Se funcionar lá, tu ( ) ajudas a copiar para dentro do Django. Isto evita que ele parta o servidor enquanto aprende.
 
 **Next Step:** Querem que eu gere o esqueleto do `docker-compose.yml` para garantir que os 4 começam com o ambiente igual? Isso poupa-vos umas 2 horas de "na minha máquina funciona, na tua não".
